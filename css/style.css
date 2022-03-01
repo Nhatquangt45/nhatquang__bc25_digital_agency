@@ -5,57 +5,16 @@
   list-style: none;
   text-decoration: none;
 }
-:root {
-  --color-primary: #fd4766;
-  --color-secondary: #337dff;
-  --color-secondary-rgb: rgba(253, 71, 102, 1);
-  --color-tertiary: #010001;
-  --color-dark: #000000;
-  --color-heading: #1f1f25;
-  --color-body: #1d1d24;
-  --color-gray: rgba(29, 29, 36, 0.75);
-  --color-midgray: #e9ecef;
-  --color-opacity-1: hsla(0, 0%, 100%, 0.2);
-  --color-light: #e4e6ea;
-  --color-lighter: #ced0d4;
-  --color-lightest: #f0f2f5;
-  --color-border: #e6e6e6;
-  --color-white: #ffffff;
-  --color-success: #3eb75e;
-  --color-danger: #ff0003;
-  --color-warning: #ff8f3c;
-  --color-info: #1ba2db;
-  --color-facebook: #3b5997;
-  --color-twitter: #1ba1f2;
-  --color-youtube: #ed4141;
-  --color-linkedin: #0077b5;
-  --color-pinterest: #e60022;
-  --color-instagram: #c231a1;
-  --color-vimeo: #00adef;
-  --color-twitch: #6441a3;
-  --color-discord: #7289da;
-  --color-extra01: #666666;
-  --color-extra02: #606770;
-  --color-extra03: #fbfbfd;
-  --color-extra04: #1a1a1a;
-  --color-extra05: #242424;
-  --radius: 10px;
-  --radius-big: 16px;
-  --radius-small: 6px;
-  --border-width: 2px;
-  --p-light: 300;
-  --p-regular: 400;
-  --p-medium: 500;
-  --p-semi-bold: 600;
-  --p-bold: 700;
-  --p-extra-bold: 800;
-  --p-black: 900;
-  --s-light: 300;
-  --s-regular: 400;
-  --s-medium: 500;
-  --s-bold: 700;
-  --s-black: 900;
-  --shadow-primary: 0px 4px 10px rgba(37, 47, 63, 0.1);
+
+h6 {
+  background: linear-gradient(
+    120deg,
+    #1c99fe 20.69%,
+    #fd4766 79.69%,
+    #7644ff 50.19%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .header__menu {
   width: 100%;
@@ -309,6 +268,7 @@
   content: "";
   background: linear-gradient(to bottom, rgba(15, 15, 15, 0) 50%);
   cursor: pointer;
+  transition: all 1s;
 }
 .project__content::after {
   position: absolute;
@@ -319,11 +279,7 @@
   display: block;
   z-index: 1;
   content: "";
-  background: linear-gradient(
-    to bottom,
-    rgb(214 12 12 / 0%),
-    var(--color-primary) 100%
-  );
+  /* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #fd4766 100%); */
   transition: opacity 0.65s cubic-bezier(0.05, 0.2, 0.1, 1);
   cursor: pointer;
   opacity: 0;
@@ -337,20 +293,21 @@
     box-shadow 0.65s cubic-bezier(0.05, 0.2, 0.1, 1);
   margin-bottom: 2rem;
 }
-.project__content:hover {
+.project__content:hover::before {
   transform: translateY(-10px);
   box-shadow: 0 25px 55px rgb(253 71 102 / 22%);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #fd4766 100%);
+  transform: scale(2);
+  transition: all 1s;
 }
 .project__content:hover .content .inner .content__heading {
   transform: translateY(-62px);
-  transition: opacity 0.65s cubic-bezier(0.05, 0.2, 0.1, 1),
-    transform 0.65s cubic-bezier(0.05, 0.2, 0.1, 1);
+  transition: all 1s;
 }
 .project__content:hover .content .inner .content__pp {
   transform: translateY(0);
   opacity: 1;
-  transition: opacity 0.65s cubic-bezier(0.05, 0.2, 0.1, 1) 0.15s,
-    transform 0.65s cubic-bezier(0.05, 0.2, 0.1, 1) 0.15s;
+  transition: all 1s;
 }
 .content__pp {
   opacity: 0;
@@ -372,6 +329,10 @@
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+}
+.project__content:hover .thumnail__item .thumnail {
+  transform: scale(1.1);
+  transition: all 1s;
 }
 .content .inner {
   position: absolute;
@@ -411,6 +372,11 @@
   background-color: transparent;
   border: 2px solid #fd4766;
   color: #fd4766;
+}
+.catelogi__list h3 {
+  color: white;
+  font-weight: 600;
+  font-size: 2rem;
 }
 /* about  */
 .about__content {
@@ -483,7 +449,7 @@
   position: relative;
   z-index: 2;
 }
-.content__testimi p::before {
+.content__testimi p::after {
   content: "";
   position: absolute;
   width: 177px;
@@ -499,9 +465,6 @@
 .content__testimi p span {
   color: red;
   font-weight: 600;
-}
-.testimonia {
-  background: #f9f9f9;
 }
 
 .testimonial__thumb img {
@@ -660,4 +623,30 @@
   width: 50%;
   height: 2px;
   display: block;
+}
+/* backtotop */
+.backtoTop {
+  background-color: transparent;
+  width: 45px;
+  height: 45px;
+  line-height: 40px;
+  display: block;
+  text-align: center;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  opacity: 0;
+  visibility: hidden;
+  color: #e62b4a;
+  border-radius: 50px;
+  border: 3px solid #ffffff33;
+  border-color: red;
+}
+.cd-top--is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cd-top--fade-out {
+  opacity: 0.5;
 }
